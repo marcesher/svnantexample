@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="Sample Build. Replace Me!" basedir="." default="svn.update">
+
+	<target name="init">
+
+		<path id="project.classpath">
+			<fileset dir="lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		
+		<echo message="Classpath includes: ${toString:project.classpath}"/>
+		
+	</target>
+
+
+	<target name="svn.update" depends="init">
+		<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="project.classpath" />
+		<echo message="updating ${basedir}" />
+		<svn svnkit="true">
+			<update dir="${basedir}" />
+		</svn>
+	</target>
+
+</project>
